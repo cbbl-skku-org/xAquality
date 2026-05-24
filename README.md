@@ -14,6 +14,9 @@ You can try the live demo of the application on Hugging Face Spaces here:
 ## Getting Started
 
 ### Preparing the Environment
+
+This project requires **Python 3.12**. 
+
 To run this project locally, first clone the repository:
 
 ```bash
