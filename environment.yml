@@ -1,0 +1,17 @@
+name: xaquality
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.12
+  - pip
+  - pip:
+    - gradio
+    - pandas==2.2.2
+    - scikit-learn==1.4.2
+    - numpy<2.0
+    - joblib
+    - lightgbm
+    - xgboost<3.0
+    - catboost
+    - huggingface_hub

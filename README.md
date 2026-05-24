@@ -14,14 +14,26 @@ You can try the live demo of the application on Hugging Face Spaces here:
 ## Getting Started
 
 ### Preparing the Environment
-To run this project locally, first clone the repository and install the necessary dependencies:
+To run this project locally, first clone the repository:
 
 ```bash
 git clone https://github.com/nhattruongpham/xAquality.git
 cd xAquality
+```
+
+#### Option A: Using Conda (Recommended)
+You can create a fully configured Conda environment using the provided `environment.yml` file:
+```bash
+conda env create -f environment.yml
+conda activate xaquality
+```
+
+#### Option B: Using pip
+Alternatively, you can install the dependencies directly using `pip`:
+```bash
 pip install -r requirements.txt
 ```
-*(Tip: We recommend using a virtual environment like `conda` or `venv` to keep dependencies isolated.)*
+*(Tip: We recommend creating a virtual environment using `python -m venv venv` before running pip to keep dependencies isolated.)*
 
 ## Running the Application
 
