@@ -7,8 +7,8 @@ import sys
 
 # Constants
 FEATURES = ["pH", "DO", "COD", "BOD5", "PO4", "NH4", "NO2", "NO3", "Coliform"]
-MODEL_PATH = "checkpoints/Stacking_GB_VC.pkl"
-SCALER_PATH = "checkpoints/scaler_weight_full.pkl"
+MODEL_PATH = "checkpoints/xAquality_model.pkl"
+SCALER_PATH = "checkpoints/scaler_weight.pkl"
 
 
 def load_artifacts():

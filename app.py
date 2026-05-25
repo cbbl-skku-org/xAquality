@@ -10,8 +10,8 @@ warnings.filterwarnings("ignore", category=UserWarning)
 
 # Constants
 FEATURES = ["pH", "DO", "COD", "BOD5", "PO4", "NH4", "NO2", "NO3", "Coliform"]
-MODEL_PATH = "checkpoints/Stacking_GB_VC.pkl"
-SCALER_PATH = "checkpoints/scaler_weight_full.pkl"
+MODEL_PATH = "checkpoints/xAquality_model.pkl"
+SCALER_PATH = "checkpoints/scaler_weight.pkl"
 
 
 # Load artifacts
@@ -216,14 +216,26 @@ with gr.Blocks() as demo:
 
             def preview_csv_fn(file):
                 if file is None:
-                    return gr.Dataframe(visible=False, value=None), gr.File(visible=False, value=None), gr.Markdown(visible=False, value="")
+                    return (
+                        gr.Dataframe(visible=False, value=None),
+                        gr.File(visible=False, value=None),
+                        gr.Markdown(visible=False, value=""),
+                    )
                 try:
                     file_path = file if isinstance(file, str) else file.name
                     df = pd.read_csv(file_path)
-                    return gr.Dataframe(visible=True, value=df), gr.File(visible=False, value=None), gr.Markdown(visible=False, value="")
+                    return (
+                        gr.Dataframe(visible=True, value=df),
+                        gr.File(visible=False, value=None),
+                        gr.Markdown(visible=False, value=""),
+                    )
                 except Exception as e:
                     print(f"Preview Error: {e}")
-                    return gr.Dataframe(visible=False, value=None), gr.File(visible=False, value=None), gr.Markdown(visible=False, value="")
+                    return (
+                        gr.Dataframe(visible=False, value=None),
+                        gr.File(visible=False, value=None),
+                        gr.Markdown(visible=False, value=""),
+                    )
 
             def process_csv_fn(file):
                 if model is None or scaler is None:
