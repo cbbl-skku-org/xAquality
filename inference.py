@@ -83,13 +83,18 @@ def main():
 
         df = pd.read_csv(args.input)
 
-        # Check if all required features are present
-        missing = [f for f in FEATURES if f not in df.columns]
+        # Check if all required features are present (case-insensitive)
+        csv_cols_lower = {c.lower(): c for c in df.columns}
+        missing = [f for f in FEATURES if f.lower() not in csv_cols_lower]
         if missing:
             print(f"Error: Missing features in CSV: {missing}")
             sys.exit(1)
 
-        preds = predict(df, model, scaler)
+        # Reconstruct DataFrame with exact feature names
+        processed_cols = {f: df[csv_cols_lower[f.lower()]] for f in FEATURES}
+        df_processed = pd.DataFrame(processed_cols)[FEATURES]
+
+        preds = predict(df_processed, model, scaler)
         df["Predicted_WQI"] = preds
 
         print("\nBatch Prediction Results:")
