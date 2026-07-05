@@ -95,10 +95,10 @@ def main():
         df_processed = pd.DataFrame(processed_cols)[FEATURES]
 
         preds = predict(df_processed, model, scaler)
-        df["Predicted_WQI"] = preds
+        df["Predicted_VN_WQI"] = preds
 
         print("\nBatch Prediction Results:")
-        print(df[["Predicted_WQI"]].head())
+        print(df[["Predicted_VN_WQI"]].head())
 
         if args.output:
             df.to_csv(args.output, index=False)
@@ -107,7 +107,7 @@ def main():
             # Print full results if no output file specified and small enough
             if len(df) <= 20:
                 print("\nFull Results:")
-                print(df[FEATURES + ["Predicted_WQI"]])
+                print(df[FEATURES + ["Predicted_VN_WQI"]])
             else:
                 print(
                     f"\nPredicted {len(df)} samples. Use --output to save all results."

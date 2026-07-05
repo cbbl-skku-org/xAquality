@@ -268,7 +268,7 @@ with gr.Blocks() as demo:
                     }
                     X = pd.DataFrame(processed_cols)[FEATURES]
                     X_scaled = scaler.transform(X.values)
-                    df["Predicted_WQI"] = model.predict(X_scaled)
+                    df["Predicted_VN_WQI"] = model.predict(X_scaled)
 
                     output_path = "predictions.csv"
                     df.to_csv(output_path, index=False)
